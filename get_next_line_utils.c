@@ -6,7 +6,26 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:26:08 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/13 17:26:09 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/14 01:43:43 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
+
+int	nl_check(char *buf, char *leftover)
+{
+	int	i;
+	int	nl_chk;
+
+	i = 0;
+	nl_chk = 0;
+	while (buf[i++])
+	{
+		if (buf[i] == '\n')
+		{
+			return (1);
+		}
+	}
+	return (0);
+}
 
