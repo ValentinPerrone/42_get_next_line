@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:26:06 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/14 01:46:23 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/22 22:27:35 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ char	*get_next_line(int fd)
 	#ifndef BUFFER_SIZE
 		#define BUFFER_SIZE 32
 	#endif
-	char	*buf;
 	static char *leftover;
+	char	*buf;
+	char 	*buf2;
+	int		mult[1];
 
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	buf[BUFFER_SIZE + 1] = '\0';
-	read(fd, buf, BUFFER_SIZE);
-	while (nl_check(buf, leftover) == 0)
-	{
-		
-		read(fd, buf, BUFFER_SIZE);
-	}
+	mult[0] = 1;
+	buf = malloc((BUFFER_SIZE * mult[0]) * sizeof(char));
+	read(fd, buf, (BUFFER_SIZE * mult[0]));
+	return (buf);
+}
+
+void	loop1(char *to, char *from)
+{
+
 }

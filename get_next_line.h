@@ -6,10 +6,12 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:26:03 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/13 18:25:17 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/20 17:42:51 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 char	*get_next_line(int fd);
