@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:29:43 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/21 18:35:06 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/23 22:24:47 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,17 @@
 int main(void) 
 {
 	int fd = open("hola.txt", O_RDONLY);
-	get_next_line(fd);
+	char *line;
+
+	line = get_next_line(fd);
+	printf("l1 %s", line);
+	free(line);
+	line = get_next_line(fd);
+	printf("l2 %s", line);
+	free(line);
+	line = get_next_line(fd);
+	printf("l3 %s", line);
+	free(line);
 	close(fd);
 	return 0;
 }

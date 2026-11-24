@@ -6,7 +6,7 @@
 /*   By: vaperron <vaperron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:26:06 by vaperron          #+#    #+#             */
-/*   Updated: 2026/11/22 22:27:35 by vaperron         ###   ########.fr       */
+/*   Updated: 2026/11/23 22:47:02 by vaperron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,28 @@ char	*get_next_line(int fd)
 	#ifndef BUFFER_SIZE
 		#define BUFFER_SIZE 32
 	#endif
-	static char *leftover;
+	static char	leftover[BUFFER_SIZE];
 	char	*buf;
-	char 	*buf2;
-	int		mult[1];
+	char	*temp;
 
-	mult[0] = 1;
-	buf = malloc((BUFFER_SIZE * mult[0]) * sizeof(char));
-	read(fd, buf, (BUFFER_SIZE * mult[0]));
+	temp = NULL;
+	buf = malloc(BUFFER_SIZE + ft_strlen(leftover));
+	ft_strlcpy(buf, leftover, ft_strlen(leftover));
+	read(fd, buf + ft_strlen(leftover), BUFFER_SIZE);
+	while(nl_check(buf, leftover) != 1)
+	{
+		temp = malloc(ft_strlen(buf));
+		ft_strlcpy(temp, buf, ft_strlen(buf) + 1);
+		free(buf);
+		buf = malloc(ft_strlen(temp) + BUFFER_SIZE);
+		ft_strlcpy(buf, temp, ft_strlen(temp) + 1);
+		read(fd, &buf[ft_strlen(temp)], BUFFER_SIZE);
+	}
+	free(temp);
 	return (buf);
 }
-
-void	loop1(char *to, char *from)
+/*
+void	loop1(char *buf, int fd)
 {
 
-}
+}*/
